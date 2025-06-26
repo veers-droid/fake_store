@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ShoppingBag
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -34,7 +35,7 @@ class BottomBar {
                 }
                 IconButton({}) {
                     Icon(
-                        imageVector = Icons.Default.Favorite,
+                        imageVector = Icons.Outlined.Favorite,
                         "Favourite",
                         modifier = Modifier.alpha(0.3f)
                     )
@@ -66,7 +67,7 @@ class BottomBar {
 
                 IconButton({}) {
                     Icon(
-                        imageVector = Icons.Default.Favorite,
+                        imageVector = Icons.Outlined.Favorite,
                         "Favourite",
                     )
                 }
@@ -99,7 +100,7 @@ class BottomBar {
 
                 IconButton({}) {
                     Icon(
-                        imageVector = Icons.Default.Favorite,
+                        imageVector = Icons.Outlined.Favorite,
                         "Favourite",
                         modifier = Modifier.alpha(0.3f)
                     )

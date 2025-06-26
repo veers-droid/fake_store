@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Image
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -104,7 +105,7 @@ fun ShopItem(
         IconButton(
             onClick = onLike
         ) {
-            Icon(Icons.Default.Favorite, null)
+            Icon(Icons.Outlined.Favorite, null)
         }
     }
 }
