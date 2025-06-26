@@ -1,4 +1,4 @@
-package com.example.e_commerceapp
+package com.example.e_commerceapp.ui.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -38,6 +38,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.e_commerceapp.R
 import com.example.e_commerceapp.ui.theme.ECommerceAppTheme
 import com.example.e_commerceapp.ui.widgets.DefaultRoundedButton
 
