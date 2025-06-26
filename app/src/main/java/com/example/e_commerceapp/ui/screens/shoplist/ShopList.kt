@@ -51,7 +51,7 @@ fun ShopListScreen() {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text("Welcome, \n $userName", fontSize = 32.sp)
-                IconTextButton(icon = Icons.AutoMirrored.Filled.Logout, "Log out") {}
+                IconTextButton(icon = Icons.AutoMirrored.Filled.Logout, backgroundColor = Color(0xFFffe7b5), text = "Log out") {}
             }
 
             Text("Fake Store", fontSize = 28.sp, modifier = Modifier.padding(top = 40.dp))
@@ -61,9 +61,8 @@ fun ShopListScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(goods.size) { index ->
-                    Text(goods[index].toString())
                     ShopItem(
-                        modifier = Modifier.fillMaxWidth().background(color = Color.Black.copy(alpha = 0.05f)),
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp).background(color = Color.Black.copy(alpha = 0.05f)),
                         item = ShopItemResponse("", "mockTitle", 12.0f, "mock description", "Mock category", "mock Image")
                     ) {
 
@@ -123,7 +122,7 @@ fun IconTextButton(
         IconButton(
             onClick = onClick,
             modifier = modifier,
-            colors = IconButtonDefaults.iconButtonColors(containerColor = Color(0xFFffe7b5))
+            colors = IconButtonDefaults.iconButtonColors(containerColor = backgroundColor)
         ) {
             Icon(
                 imageVector = icon,
