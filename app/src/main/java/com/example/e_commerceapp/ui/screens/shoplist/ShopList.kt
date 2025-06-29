@@ -33,27 +33,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.e_commerceapp.models.ShopItemResponse
 import com.example.e_commerceapp.ui.widgets.BottomBar
+import com.example.e_commerceapp.ui.widgets.TopBar
 
 
 @Preview
 @Composable
 fun ShopListScreen() {
+    val userName by remember { mutableStateOf("veers") }
+    Scaffold (modifier = Modifier.fillMaxSize(), bottomBar = { BottomBar.Home() }, topBar = {TopBar.Main("Welcome, \n $userName") {
 
-    Scaffold (modifier = Modifier.fillMaxSize(), bottomBar = { BottomBar.Home() }) { _ ->
+    }}) { paddingValues ->
 
         val goods = listOf(1, 2, 3)
-        val userName by remember { mutableStateOf("veers") }
 
         Column (
-            modifier = Modifier.fillMaxSize().padding(horizontal = 15.dp).padding(top = 15.dp),
+            modifier = Modifier.fillMaxSize().padding(horizontal = 15.dp)
+                .padding(top = paddingValues.calculateTopPadding()),
         ) {
-            Row (
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text("Welcome, \n $userName", fontSize = 32.sp)
-                IconTextButton(icon = Icons.AutoMirrored.Filled.Logout, backgroundColor = Color(0xFFffe7b5), text = "Log out") {}
-            }
 
             Text("Fake Store", fontSize = 28.sp, modifier = Modifier.padding(top = 40.dp))
 
