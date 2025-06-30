@@ -18,9 +18,9 @@ fun AppNavGraph(navController: NavHostController,) {
         navController = navController,
         startDestination = "welcome"
     ) {
-        composable("welcome") { WelcomePage() }
-        composable("login") { LoginPage() }
-        composable("home") { ShopListScreen() }
+        composable("welcome") { WelcomePage(navController) }
+        composable("login") { LoginPage(navController) }
+        composable("home") { ShopListScreen(navController) }
         composable("cart") { CartScreen() }
         composable("wishlist") { WishListScreen() }
         composable("product_details") { ProductScreen() }

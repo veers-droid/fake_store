@@ -31,14 +31,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.e_commerceapp.models.ShopItemResponse
 import com.example.e_commerceapp.ui.widgets.BottomBar
 import com.example.e_commerceapp.ui.widgets.TopBar
 
 
-@Preview
 @Composable
-fun ShopListScreen() {
+fun ShopListScreen(navController: NavController) {
     val userName by remember { mutableStateOf("veers") }
     Scaffold (modifier = Modifier.fillMaxSize(), bottomBar = { BottomBar.Home() }, topBar = {TopBar.Main("Welcome, \n $userName") {
 

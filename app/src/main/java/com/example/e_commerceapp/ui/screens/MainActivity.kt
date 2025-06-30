@@ -22,7 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,7 +37,10 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.navigation.AppNavGraph
 import com.example.e_commerceapp.ui.theme.ECommerceAppTheme
 import com.example.e_commerceapp.ui.widgets.DefaultRoundedButton
 
@@ -48,16 +50,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ECommerceAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
-                    WelcomePage()
-                }
+                val navController = rememberNavController()
+                AppNavGraph(navController)
             }
         }
     }
 }
 
 @Composable
-fun WelcomePage() {
+fun WelcomePage(navController: NavController) {
     Image(
         painter = painterResource(R.drawable.welcome_page_image),
         contentDescription = null,
@@ -80,17 +81,16 @@ fun WelcomePage() {
             fontSize = 22.sp,
             text = "Fake Store")
 
-        DefaultRoundedButton(title = "Login", modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 15.dp)) { }
+        DefaultRoundedButton(title = "Login", modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 15.dp)) { navController.navigate("login") }
     }
 }
 
-@Preview
 @Composable
-fun LoginPage() {
+fun LoginPage(navController: NavController) {
     var password by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
 
-    Column (modifier = Modifier.fillMaxSize().padding(horizontal = 15.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
+    Column (modifier = Modifier.fillMaxSize().padding(horizontal = 15.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Button({},
             modifier = Modifier.align(alignment = Alignment.Start).padding( top = 15.dp),
             shape = RoundedCornerShape(5.dp),
@@ -101,7 +101,7 @@ fun LoginPage() {
             Image(painter = painterResource(R.drawable.back_arrow), contentDescription = null)
         }
 
-        Column (modifier = Modifier.fillMaxSize().padding(horizontal = 5.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
+        Column (modifier = Modifier.fillMaxSize().padding(horizontal = 5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text("Welcome back! Glad to see you, Again!", fontSize = 30.sp, modifier = Modifier.padding(top = 20.dp))
 
@@ -118,7 +118,9 @@ fun LoginPage() {
                 password = pass
             }
 
-            DefaultRoundedButton("Login", modifier = Modifier.fillMaxWidth().padding( top = 20.dp)) { }
+            DefaultRoundedButton("Login", modifier = Modifier.fillMaxWidth().padding( top = 20.dp)) {
+                navController.navigate("home")
+            }
         }
 
     }
@@ -147,7 +149,7 @@ fun PasswordField(
                 Icons.Default.VisibilityOff
 
             IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                Icon(imageVector = image, contentDescription = if (passwordVisible) "Скрыть" else "Показать")
+                Icon(imageVector = image, contentDescription = null)
             }
         }
     )
