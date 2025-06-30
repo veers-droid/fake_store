@@ -12,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -50,6 +51,7 @@ class TopBar {
             Row (
                 modifier = Modifier.fillMaxWidth().padding(top = 10.dp).padding(horizontal = 15.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(title, fontSize = 32.sp)
                 IconTextButton(icon = Icons.AutoMirrored.Filled.Logout, backgroundColor = Color(0xFFffe7b5), text = "Log out", onClick = onLogOut)
