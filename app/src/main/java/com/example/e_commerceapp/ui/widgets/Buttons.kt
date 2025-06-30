@@ -10,12 +10,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DefaultRoundedButton(title : String,  modifier: Modifier = Modifier, onClick: () -> Unit,) {
+fun DefaultRoundedButton(title : String,  modifier: Modifier = Modifier, buttonColor : Color = Color.Black, textColor : Color = Color.White,  onClick: () -> Unit,) {
     Button(onClick,
         modifier = modifier,
         shape = RoundedCornerShape(6.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
+        colors = ButtonDefaults.buttonColors(containerColor = buttonColor)
     ) {
-        Text(title, color = Color.White)
+        Text(title, color = textColor)
     }
 }
