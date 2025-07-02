@@ -12,7 +12,7 @@ import com.example.e_commerceapp.ui.screens.shoplist.ShopListScreen
 import com.example.e_commerceapp.ui.screens.wishlist.WishListScreen
 
 @Composable
-fun AppNavGraph(navController: NavHostController,) {
+fun AppNavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
