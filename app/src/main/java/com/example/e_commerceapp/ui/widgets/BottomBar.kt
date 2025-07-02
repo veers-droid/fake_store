@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.e_commerceapp.navigation.LocalNavController
 
 class BottomBar {
     companion object {
@@ -59,6 +60,7 @@ class BottomBar {
 
         @Composable
         fun Home() {
+            val navController = LocalNavController.current
             Row (
                 modifier = rowModifier,
                 verticalAlignment = Alignment.CenterVertically,
@@ -70,14 +72,18 @@ class BottomBar {
                         "Home",
                     )
                 }
-                IconButton({}) {
+                IconButton({
+                    navController.navigate("wishlist")
+                }) {
                     Icon(
                         imageVector = Icons.Outlined.Favorite,
                         "Favourite",
                         modifier = Modifier.alpha(0.3f)
                     )
                 }
-                IconButton({}) {
+                IconButton({
+                    navController.navigate("cart")
+                }) {
                     Icon(
                         imageVector = Icons.Default.ShoppingBag,
                         "Shopping Bag",
@@ -89,12 +95,15 @@ class BottomBar {
 
         @Composable
         fun Favourite() {
+            val navController = LocalNavController.current
             Row (
                 modifier = rowModifier,
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconButton({}) {
+                IconButton({
+                    navController.navigate("home")
+                }) {
                     Icon(
                         imageVector = Icons.Default.Home,
                         "Home",
@@ -109,7 +118,9 @@ class BottomBar {
                     )
                 }
 
-                IconButton({}) {
+                IconButton({
+                    navController.navigate("cart")
+                }) {
                     Icon(
                         imageVector = Icons.Default.ShoppingBag,
                         "Shopping Bag",
@@ -122,12 +133,15 @@ class BottomBar {
 
         @Composable
         fun ShoppingBag() {
+            val navController = LocalNavController.current
             Row (
                 modifier = rowModifier,
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconButton({}) {
+                IconButton({
+                    navController.navigate("home")
+                }) {
                     Icon(
                         imageVector = Icons.Default.Home,
                         "Home",
@@ -135,7 +149,9 @@ class BottomBar {
                     )
                 }
 
-                IconButton({}) {
+                IconButton({
+                    navController.navigate("wishlist")
+                }) {
                     Icon(
                         imageVector = Icons.Outlined.Favorite,
                         "Favourite",

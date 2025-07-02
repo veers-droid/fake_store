@@ -41,6 +41,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.navigation.AppNavGraph
+import com.example.e_commerceapp.navigation.LocalNavController
 import com.example.e_commerceapp.ui.theme.ECommerceAppTheme
 import com.example.e_commerceapp.ui.widgets.DefaultRoundedButton
 
@@ -58,7 +59,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun WelcomePage(navController: NavController) {
+fun WelcomePage() {
+    val navController = LocalNavController.current
     Image(
         painter = painterResource(R.drawable.welcome_page_image),
         contentDescription = null,
@@ -86,7 +88,8 @@ fun WelcomePage(navController: NavController) {
 }
 
 @Composable
-fun LoginPage(navController: NavController) {
+fun LoginPage() {
+    val navController = LocalNavController.current
     var password by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
 
