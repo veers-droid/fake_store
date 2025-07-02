@@ -2,6 +2,7 @@ package com.example.e_commerceapp.ui.screens.shoplist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Icon
@@ -24,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +34,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.e_commerceapp.models.ShopItemResponse
+import com.example.e_commerceapp.navigation.LocalNavController
 import com.example.e_commerceapp.ui.widgets.BottomBar
 import com.example.e_commerceapp.ui.widgets.TopBar
 
@@ -74,8 +78,12 @@ fun ShopItem(
     item : ShopItemResponse,
     onLike : () -> Unit
 ) {
+    var isLiked by remember {  mutableStateOf(false) }
+    val navController = LocalNavController.current
     Row (
-        modifier = modifier,
+        modifier = modifier.clickable {
+            navController.navigate("product_details")
+        },
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
@@ -97,9 +105,12 @@ fun ShopItem(
         }
 
         IconButton(
-            onClick = onLike
+            onClick = {
+                onLike.invoke()
+                isLiked = true
+            }
         ) {
-            Icon(Icons.Outlined.Favorite, null)
+            Icon( if (!isLiked)  Icons.Default.FavoriteBorder else Icons.Default.Favorite, null)
         }
     }
 }
